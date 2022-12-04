@@ -65,13 +65,14 @@ start = time.perf_counter()
 
 #готуємо допоміжну таблицю Х
 X = []
-for i in range(1,2**10+1):
-    X.append((i**e)%N)
+m=2**(l//2)+1
+for i in range(1,m):
+    X.append(gmpy2.powmod(i,e,N))
    
 #Атака «зустрiч посерединi»
 Sindex=0
 Tindex=0
-for i in range(1,2**10+1):
+for i in range(1,m):
     S=euclid(X[i-1],N)[1]
     Cs=(C*S)%N
     if Cs in X:
@@ -94,7 +95,7 @@ start = time.perf_counter()
 
 #повний перебір можливих вiдкритих текстiв
 for i in range(1,N):
-    x=(i**e)%N
+    x=gmpy2.powmod(i,e,N)
     if x==C:
         result = i
         break
