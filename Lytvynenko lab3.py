@@ -88,3 +88,22 @@ print(hex(int(M)))
 #перевірка
 C1=(M**e)%N
 print(C1==C)
+
+#починаємо відлік часу
+start = time.perf_counter()
+
+#повний перебір можливих вiдкритих текстiв
+for i in range(1,N):
+    x=(i**e)%N
+    if x==C:
+        result = i
+        break
+    
+#закінчуємо відлік часу
+end = time.perf_counter()
+
+#перевірка
+print(result==M)
+
+#час виконання
+print("time = " + str(end-start) + "   sec")
