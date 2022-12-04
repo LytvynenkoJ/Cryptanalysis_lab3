@@ -41,3 +41,9 @@ M = M%N
 M=gmpy2.iroot(M, 3)
 
 print(hex(int(M[0])))
+
+#перевірки
+for i in range(3):
+    c=(M[0]**3)%n[i]
+    c=int(c)
+    print(c==C[i])
