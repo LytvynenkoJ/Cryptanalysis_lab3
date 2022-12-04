@@ -47,3 +47,15 @@ for i in range(3):
     c=(M[0]**3)%n[i]
     c=int(c)
     print(c==C[i])
+
+#зчитуємо дані для другої атаки
+e = 65537
+l = 20
+f = open("MiM14.txt", "r")
+lines = f.readlines()
+lines = [line.rstrip() for line in lines]
+f.close()
+SrtC = lines[0].split(" = ")[1]
+SrtN = lines[1].split(" = ")[1]
+C=int(SrtC, base=16)
+N=int(SrtN, base=16)
