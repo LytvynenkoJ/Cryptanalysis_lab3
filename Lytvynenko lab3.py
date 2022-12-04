@@ -59,3 +59,32 @@ SrtC = lines[0].split(" = ")[1]
 SrtN = lines[1].split(" = ")[1]
 C=int(SrtC, base=16)
 N=int(SrtN, base=16)
+
+#починаємо відлік часу
+start = time.perf_counter()
+
+#готуємо допоміжну таблицю Х
+X = []
+for i in range(1,2**10+1):
+    X.append((i**e)%N)
+   
+#Атака «зустрiч посерединi»
+Sindex=0
+Tindex=0
+for i in range(1,2**10+1):
+    S=euclid(X[i-1],N)[1]
+    Cs=(C*S)%N
+    if Cs in X:
+        Sindex=i
+        Tindex=X.index(Cs)+1
+        break
+M=Sindex*Tindex
+
+#закінчуємо відлік часу
+end = time.perf_counter()
+
+print(hex(int(M)))
+
+#перевірка
+C1=(M**e)%N
+print(C1==C)
