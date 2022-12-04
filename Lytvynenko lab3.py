@@ -24,3 +24,20 @@ def euclid(a, b):
     x = v - (b//a) * u
     y = u
     return r,x,y
+
+#атака з малою експонентою на основi китайської теореми про лишки
+N=1
+for i in range(len(n)):
+    N*=n[i]
+    
+M=0
+for i in range(3):
+    Ni=N//n[i]
+    v=euclid(Ni,n[i])[1]
+    if v<0:
+        v+=n[i]
+    M+=C[i]*Ni*v
+M = M%N
+M=gmpy2.iroot(M, 3)
+
+print(hex(int(M[0])))
